@@ -1,8 +1,15 @@
 import React from 'react'
+import Movie from './components/Movie'
+
+import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div>App</div>
+    <div className='container'>
+      <Movie />
+      <Footer />
+    </div>
   )
 }
 
