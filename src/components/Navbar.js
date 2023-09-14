@@ -1,24 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function Navbar({ onSearch }) {
+function Navbar({ onSearchButtonClick }) {
+  const [searchTerm, setSearchTerm] = useState('');
 
-    const [searchQuery, setSearchQuery] = useState('');
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-    const handleSearch = () => {
-        onSearch(searchQuery);
-      };
+  const handleSearchButtonClick = () => {
+    // Check if there is a valid searchTerm before triggering the search
+    if (searchTerm.trim() !== '') {
+      onSearchButtonClick(searchTerm);
+    }
+  };
 
   return (
     <div className="navbar">
-      <span>MovieBox</span>
+      <div>
+        <Link to="/" className="logo">
+          <span>MovieBox</span>
+        </Link>
+      </div>
       <div className="search">
         <input
           type="text"
           placeholder="Search for movies..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchTerm}
+          onChange={handleInputChange}
         />
-        <button onClick={handleSearch}>Search</button>
+        <Link to="/search">
+          <button  onClick={() => handleSearchButtonClick(searchTerm)}>Search</button>
+        </Link>
       </div>
     </div>
   )
