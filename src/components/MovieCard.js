@@ -5,7 +5,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="movie-card" data-testid="movie-card">
-      <Link to={`/movies/${movie.id}`}>
+      <Link to={`/movies/${movie.id}`} style={{ textDecoration: 'none', color: "#fff"}}>
         <img
           src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
           alt={movie.title}

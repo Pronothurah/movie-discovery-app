@@ -32,11 +32,20 @@ function MovieDetails({ match }) {
   return (
     <div className="movie-details">
       <Aside />
-      <div className='movie-details'>
+      <div className='movie-banner'>
+        <div>
+        <img
+            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+            alt={movie.title}
+            data-testid="movie-poster"
+            style={{width: '80%', height: '250px', objectFit: 'cover', marginTop: '10px', marginLeft: '10px'}}
+          />
+        </div> 
         <h2 data-testid="movie-title">{movie.title}</h2>
         <p data-testid="movie-release-date">Release Date (UTC): {movie.release_date}</p>
         <p data-testid="movie-runtime">Runtime: {movie.runtime} minutes</p>
-        <p data-testid="movie-overview">Overview: {movie.overview}</p>
+        <p data-testid="movie-overview" style={{width: '700px'}}>Overview: {movie.overview}</p>
+        
       </div>
         
     </div>

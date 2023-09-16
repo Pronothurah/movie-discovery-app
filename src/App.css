@@ -72,6 +72,12 @@ button {
   gap: 20px; 
 }
 
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
 .discover__movie img {
   width: 100%; 
   height: auto; 
@@ -100,6 +106,15 @@ button {
   margin: 0 20px 20px 0;
 }
 
+.movie-details {
+  display: flex;
+}
+
+.movie-banner {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+}
 .Button {
   display: flex;
   margin-top: 20px;

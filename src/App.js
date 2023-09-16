@@ -25,10 +25,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/aside" element={<Aside />} />
         <Route path="/hero" element={<Hero />} />
-        <Route
-            path="/coming-soon"
-            element={<ComingSoon />}
-          />
+        <Route path="/coming-soon" element={<ComingSoon />}/>
       </Routes>
     </div>
   )
