@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import './../App.css';
 import Navbar from './Navbar';
+import Hero from './Hero';
 
 function Home() {
 
@@ -29,6 +30,7 @@ function Home() {
 
     <div className='discover__container section__padding'>
         <Navbar />
+        <Hero />
         <div className='movie_title'>
             <h1>Featured Movies</h1>
             <p>See More &gt;</p>

@@ -1,37 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import LogoSvg from '../assets/logo1.png';
+import Search from './Search';
 
-function Navbar({ onSearchButtonClick }) {
-  const [searchTerm, setSearchTerm] = useState('');
+function Navbar() {
+  // const [searchTerm, setSearchTerm] = useState('');
 
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
 
-  const handleSearchButtonClick = () => {
-    // Check if there is a valid searchTerm before triggering the search
-    if (searchTerm.trim() !== '') {
-      onSearchButtonClick(searchTerm);
-    }
-  };
+  // const handleSearchButtonClick = () => {
+  //   // Check if there is a valid searchTerm before triggering the search
+  //   if (searchTerm.trim() !== '') {
+  //     onSearchButtonClick(searchTerm);
+  //   }
+  // };
 
   return (
     <div className="navbar">
       <div>
         <Link to="/" className="logo">
-          <span>MovieBox</span>
+         <img src={LogoSvg} alt="Logo" className="sidebar-logo" />
         </Link>
       </div>
       <div className="search">
-        <input
-          type="text"
-          placeholder="Search for movies..."
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-        <Link to="/search">
-          <button  onClick={() => handleSearchButtonClick(searchTerm)}>Search</button>
-        </Link>
+        <Search />
       </div>
     </div>
   )
