@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import Aside from './Aside';
 
@@ -16,10 +16,14 @@ function MovieDetails({ match }) {
     })
   }
 
+  const callBack = useCallback(() => {
+    findMovie();
+  }, [])
+
 
   const effect = useEffect(() => {
-      findMovie();
-  }, []);
+      callBack();
+  }, [callBack]);
 
   console.log({effect})
 

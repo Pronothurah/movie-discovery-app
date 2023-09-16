@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { createContext } from 'react';
 
 export const AppContext = createContext({});
@@ -27,9 +27,12 @@ export function ContextProvider({ children }) {
         getMovie();
     }
 
+    const memo = useCallback(
+       getMovie, [searchTerm]
+    )
     useEffect(() => {
         getMovie();
-    }, [])
+    }, [memo]);
 
     return (
         <AppContext.Provider value={{setSearchTerm, searchResults, setSearchResults,isLoading, setIsLoading, handleSearchSubmit, searchTerm, }}>
