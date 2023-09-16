@@ -6,7 +6,7 @@ import { AppContext } from './Context';
 
 function Search() {
 
-  const {setSearchTerm, searchTerm, handleSearchSubmit} = useContext(AppContext);
+  const {setSearchTerm, searchTerm, handleSearchSubmit, searchResults} = useContext(AppContext);
   
   return (
     <div className="search">
@@ -14,11 +14,18 @@ function Search() {
         <div className="search-input">
           <input
             type="text"
+            list="data-list"
             placeholder="Enter a movie title"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button onClick={handleSearchSubmit}>Search</button>
+          <datalist id='data-list'>{
+            searchResults.slice(0, 5).map((result) => (
+              <option key={result.id} value={result.title}  />
+            ))}
+            
+        </datalist>
         </div>
         
     </div>

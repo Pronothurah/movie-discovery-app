@@ -8,19 +8,14 @@ export function ContextProvider({ children }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    // const navigate = useNavigate();
-
-
-    const getMovie = () => {
+    
+    const getMovie = async () => {
         setIsLoading(true);
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=9ca3c614db35b955a2ca1033fe02b80b&query=${searchTerm}`)
+        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=9ca3c614db35b955a2ca1033fe02b80b&query=${searchTerm}`)
         .then((res) => res.json())
-        .then((json) => {
-            setSearchResults(json.results);
+        .then( async (json) => {
+            await setSearchResults(json.results);
             setIsLoading(false);
-            // if (json.results.length > 0) {
-            // navigate(`/movie/${json.results[0].id}`);
-            // }
         })
         .catch((error) => {
             console.error('Error fetching data:', error);

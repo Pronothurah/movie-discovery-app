@@ -7,21 +7,17 @@ function MovieDetails({ match }) {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    // Get the movie ID from the URL parameters
-    // const movieId = match.params.id;
-    
+  const findMovie = async () => {
+    await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=9ca3c614db35b955a2ca1033fe02b80b`)
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      setMovie(json);
+    })
+  }
 
-    // Fetch the details of the specific movie
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=9ca3c614db35b955a2ca1033fe02b80b`)
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        setMovie(json);
-      })
-      // .catch((error) => {
-      //   console.error('Error fetching data:', error);
-      // });
+  useEffect(() => {
+      findMovie();
   }, [id]);
 
   if (!movie) {

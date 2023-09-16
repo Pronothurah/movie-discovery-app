@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom';
 function Home() {
 
     const [movieList, setMovieList] = useState([]);
-    const { searchResults, isLoading} = useContext(AppContext);
+    const { searchResults, isLoading, handleSeachSubmit} = useContext(AppContext);
     
 
-    const getMovie = () => {
-        fetch("https://api.themoviedb.org/3/discover/movie?api_key=9ca3c614db35b955a2ca1033fe02b80b")
+    const getMovie = async () => {
+        await fetch("https://api.themoviedb.org/3/discover/movie?api_key=9ca3c614db35b955a2ca1033fe02b80b")
         .then(res => res.json())
         .then(json => setMovieList(json.results))
     }
@@ -23,15 +23,19 @@ function Home() {
         getMovie();
     }, []);
 
+    if (searchResults?.length > 0 ) {
+        document.getElementById('queries').scrollIntoView({behavior: 'smooth'});
+    }
+
     // console.log(searchResults);
     
   return (
 
     <div className='discover__container section__padding'>
         <Navbar />
-        {!!searchResults && <Hero />}
+        <Hero />
         <div >
-            <h1>Search Results</h1>
+            <h1 id='queries'>Search Results</h1>
             <div >
                 {isLoading && <div>Loading...</div>}
                 <div className='search-results'>
