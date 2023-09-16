@@ -16,9 +16,12 @@ function MovieDetails({ match }) {
     })
   }
 
-  useEffect(() => {
+
+  const effect = useEffect(() => {
       findMovie();
-  }, [id]);
+  }, []);
+
+  console.log({effect})
 
   if (!movie) {
     // Render a loading message or component while fetching movie details

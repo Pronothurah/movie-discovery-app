@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 function Home() {
 
     const [movieList, setMovieList] = useState([]);
-    const { searchResults, isLoading, handleSeachSubmit} = useContext(AppContext);
+    const { searchResults, isLoading} = useContext(AppContext);
     
 
     const getMovie = async () => {

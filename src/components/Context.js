@@ -29,7 +29,7 @@ export function ContextProvider({ children }) {
 
     useEffect(() => {
         getMovie();
-    }, [searchTerm])
+    }, [])
 
     return (
         <AppContext.Provider value={{setSearchTerm, searchResults, setSearchResults,isLoading, setIsLoading, handleSearchSubmit, searchTerm, }}>
